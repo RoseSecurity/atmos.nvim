@@ -21,6 +21,7 @@ This plugin enhances your Atmos workflow by providing quick and easy navigation 
 ## :exclamation: Features
 
 - List and navigate Atmos stacks and components using Telescope
+- Validate Atmos stacks directly from Neovim
 - Quick access to stack and component definitions
 - Seamless integration with your existing Neovim setup
 
@@ -76,9 +77,14 @@ The plugin provides two main commands:
    - Opens a Telescope picker listing all available Atmos components
    - Selecting a component will navigate you to the component directory
 
+3. `:AtmosValidateStacks`
+   - Validate Atmos stack manifest configurations
+
+
 You can map these commands to key bindings for quicker access. For example:
 
 ```lua
 vim.api.nvim_set_keymap('n', '<leader>as', ':AtmosListStacks<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>ac', ':AtmosListComponents<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>av', ':AtmosValidateStacks<CR>', { noremap = true, silent = true })
 ```
