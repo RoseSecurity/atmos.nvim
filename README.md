@@ -57,9 +57,9 @@ For other package managers, please refer to their respective documentation for a
 Add the following to your Neovim configuration:
 
 ```lua
-require('atmos').setup({
-  base_path = '/path/to/your/atmos/base',
-  config_path = '/path/to/your/atmos/config'
+require("atmos").setup({
+  base_path = "<ATMOS_BASE_PATH>",
+  config_path = "<ATMOS_CLI_CONFIG>"
 })
 ```
 
