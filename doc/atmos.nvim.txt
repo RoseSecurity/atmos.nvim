@@ -1,1 +1,52 @@
-*atmos.nvim.txt*
+*atmos.txt*  Atmos integration for Neovim
+
+==============================================================================
+CONTENTS                                               *atmos-contents*
+
+1. Introduction ........................... |atmos-introduction|
+2. Requirements ........................... |atmos-requirements|
+3. Setup .................................. |atmos-setup|
+4. Usage .................................. |atmos-usage|
+5. Commands ............................... |atmos-commands|
+
+==============================================================================
+1. INTRODUCTION                                    *atmos-introduction*
+
+Atmos is a Neovim plugin that integrates Atmos with Telescope,
+allowing you to list and navigate Atmos stacks and components easily.
+
+==============================================================================
+2. REQUIREMENTS                                    *atmos-requirements*
+
+- Neovim 0.8 or later
+- Telescope.nvim
+- Atmos CLI installed and configured
+
+==============================================================================
+3. SETUP                                           *atmos-setup*
+
+Add the following to your Neovim configuration:
+
+>
+  require('atmos').setup({
+    base_path = '/path/to/your/atmos/base',
+    config_path = '/path/to/your/atmos/config'
+  })
+<
+
+==============================================================================
+4. USAGE                                           *atmos-usage*
+
+After setup, you can use the provided commands to list Atmos stacks and
+components using Telescope.
+
+==============================================================================
+5. COMMANDS                                        *atmos-commands*
+
+:AtmosListStacks                                   *:AtmosListStacks*
+  List all Atmos stacks using Telescope.
+
+:AtmosListComponents                               *:AtmosListComponents*
+  List all Atmos components using Telescope.
+
+vim:tw=78:ts=8:ft=help:norl:
