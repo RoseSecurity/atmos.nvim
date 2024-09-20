@@ -80,7 +80,6 @@ The plugin provides two main commands:
 3. `:AtmosValidateStacks`
    - Validate Atmos stack manifest configurations
 
-
 You can map these commands to key bindings for quicker access. For example:
 
 ```lua
