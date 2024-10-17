@@ -77,13 +77,19 @@ The plugin provides two main commands:
    - Opens a Telescope picker listing all available Atmos components
    - Selecting a component will navigate you to the component directory
 
-3. `:AtmosValidateStacks`
+3. `:AtmosListVariables`
+   - Opens a Telescope picker with all available stacks
+   - After selecting the stack, a list of components for the stack will appear
+   - Once the component for the stack is selected, the variables and values will be displayed
+
+4. `:AtmosValidateStacks`
    - Validate Atmos stack manifest configurations
 
 You can map these commands to key bindings for quicker access. For example:
 
 ```lua
-vim.api.nvim_set_keymap('n', '<leader>as', ':AtmosListStacks<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ac', ':AtmosListComponents<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>als', ':AtmosListStacks<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>alc', ':AtmosListComponents<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>alv', ':AtmosListVariables<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>av', ':AtmosValidateStacks<CR>', { noremap = true, silent = true })
 ```

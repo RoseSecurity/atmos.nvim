@@ -94,6 +94,52 @@ local function show_in_telescope(output, is_component)
     }):find()
 end
 
+local function atmos_list_variables_command()
+    local stacks_output = atmos_list_stacks()
+    local stacks = vim.split(stacks_output, "\n", { trimempty = true })
+    
+    pickers.new({}, {
+        prompt_title = "Select Stack",
+        finder = finders.new_table({ results = stacks }),
+        sorter = conf.generic_sorter({}),
+        attach_mappings = function(prompt_bufnr, map)
+            actions.select_default:replace(function()
+                actions.close(prompt_bufnr)
+                local stack_selection = action_state.get_selected_entry()
+                if not stack_selection then return end
+                local selected_stack = stack_selection[1]
+                
+                local components_output = atmos_list_components()
+                pickers.new({}, {
+                    prompt_title = "Select Component",
+                    finder = finders.new_table({ results = components_output }),
+                    sorter = conf.generic_sorter({}),
+                    attach_mappings = function(prompt_bufnr2, map2)
+                        actions.select_default:replace(function()
+                            actions.close(prompt_bufnr2)
+                            local component_selection = action_state.get_selected_entry()
+                            if not component_selection then return end
+                            local selected_component = component_selection[1]:match("^[^/]+")
+                            
+                            local command = 'atmos describe component ' .. selected_component .. ' -s ' .. selected_stack .. ' | yq -r \'.vars\''
+                            local handle = io.popen(command)
+                            if not handle then
+                                error("Failed to execute atmos describe command")
+                            end
+                            local result = handle:read("*a")
+                            handle:close()
+                            
+                            show_floating_window(result)
+                        end)
+                        return true
+                    end,
+                }):find()
+            end)
+            return true
+        end,
+    }):find()
+end
+
 local function atmos_list_stacks_command()
     local output = atmos_list_stacks()
     output = vim.split(output, "\n", { trimempty = true }) -- Ensure output is split and trimmed
@@ -120,6 +166,7 @@ end
 vim.api.nvim_create_user_command('AtmosListStacks', atmos_list_stacks_command, {})
 vim.api.nvim_create_user_command('AtmosListComponents', atmos_list_components_command, {})
 vim.api.nvim_create_user_command('AtmosValidateStacks', atmos_validate_stacks_command, {})
+vim.api.nvim_create_user_command('AtmosListVariables', atmos_list_variables_command, {})
 
 -- Setup function
 local function setup(options)
@@ -132,4 +179,3 @@ return {
     atmos_list_components_command = atmos_list_components_command,
     atmos_validate_stacks_command = atmos_validate_stacks_command -- Fix here, use the correct function
 }
-
