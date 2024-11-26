@@ -20,8 +20,8 @@ allowing you to list and navigate Atmos stacks and components easily.
 
 - Neovim 0.8 or later
 - Telescope.nvim
+- Atmos 1.110.0 or later CLI installed and configured
 - Atmos CLI installed and configured
-- YQ
 
 ==============================================================================
 3. SETUP                                           *atmos-setup*
