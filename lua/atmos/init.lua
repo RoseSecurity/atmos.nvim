@@ -9,7 +9,7 @@ local builtin = require('telescope.builtin')
 
 -- List Atmos stacks
 local function atmos_list_stacks()
-    local handle = io.popen('atmos describe stacks --sections none | grep -e "^\\S" | sed s/://g')
+    local handle = io.popen('atmos list stacks')
     if not handle then
         error("Failed to execute command")
     end
@@ -20,7 +20,7 @@ end
 
 -- List Atmos components
 local function atmos_list_components()
-    local handle = io.popen('atmos describe stacks --format json --sections none | jq ".[].components.terraform" | jq -s add | jq -r "keys[]"')
+    local handle = io.popen('atmos list components')
     if not handle then
         error("Failed to execute command")
     end
