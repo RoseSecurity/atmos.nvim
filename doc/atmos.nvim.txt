@@ -21,6 +21,7 @@ allowing you to list and navigate Atmos stacks and components easily.
 - Neovim 0.8 or later
 - Telescope.nvim
 - Atmos 1.110.0 or later CLI installed and configured
+- Atmos CLI installed and configured
 
 ==============================================================================
 3. SETUP                                           *atmos-setup*
@@ -49,4 +50,9 @@ components using Telescope.
 :AtmosListComponents                               *:AtmosListComponents*
   List all Atmos components using Telescope.
 
+:AtmosListVariables                                *:AtmosListVariables*
+  List all Atmos values using Telescope.
+
+:AtmosValidateStacks                               *:AtmosValidateStacks*
+  Validate all Atmos stacks.
 vim:tw=78:ts=8:ft=help:norl:
