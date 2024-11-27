@@ -29,7 +29,7 @@ This plugin enhances your Atmos workflow by providing quick and easy navigation 
 
 > [!IMPORTANT]
 >
-> - Neovim 0.8 or later
+> - Neovim `0.8` or later
 > - [Telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 > - [Atmos](https://atmos.tools/install/) `1.110.0` or later installed and configured in your system
 
